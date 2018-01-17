@@ -50,3 +50,9 @@ EOF'
 
 sudo apt-get update -y
 ```
+
+Load untared images
+
+```shell
+for master_img in `ls |  egrep -v 'agent|dependents|kubernetes-docker|networking' `; do  docker load -i $master_img; done
+```
