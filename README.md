@@ -39,3 +39,15 @@ wget https://launchpad.net/~ubuntu-security-proposed/+archive/ubuntu/ppa/+build/
 
 sudo dpkg -i libgcrypt11_1.5.4-2ubuntu1.1_amd64.deb
 ```
+
+Add main repo to ubuntu source list
+
+```shell
+sudo bash -c 'cat <<EOF >>/etc/apt/sources.list
+deb http://us.archive.ubuntu.com/ubuntu/ xenial main 
+deb-src http://us.archive.ubuntu.com/ubuntu/ xenial main 
+EOF'
+
+sudo apt-get update -y
+
+```
