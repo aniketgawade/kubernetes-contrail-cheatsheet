@@ -44,10 +44,9 @@ Add main repo to ubuntu source list
 
 ```shell
 sudo bash -c 'cat <<EOF >>/etc/apt/sources.list
-deb http://us.archive.ubuntu.com/ubuntu/ xenial main 
-deb-src http://us.archive.ubuntu.com/ubuntu/ xenial main 
+deb http://us.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse 
+deb-src http://us.archive.ubuntu.com/ubuntu/ xenial restricted universe multiverse 
 EOF'
 
 sudo apt-get update -y
-
 ```
