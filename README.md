@@ -62,11 +62,12 @@ Custom output
 ```shell
 kubectl get services -o=custom-columns=NAME:.metadata.name,Type:.spec.type
 ```
-
 ```shell
 kubectl get services -o jsonpath='{.items[*].spec.clusterIP},{.items[*].metadata.name}'
 ```
-
 ```shell
 kubectl get services -o json | jq -r '.items[].metadata.name'
+```
+```shell
+kubectl get services -o json | jq '.items[] | {Name: .metadata.name, Type: .spec.type, ClusterIP: .spec.clusterIP}'
 ```
