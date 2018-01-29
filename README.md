@@ -56,3 +56,14 @@ Load untared images
 ```shell
 for master_img in `ls |  egrep -v 'agent|dependents|kubernetes-docker|networking' `; do  docker load -i $master_img; done
 ```
+
+Custom output
+
+```shell
+kubectl get services -o=custom-columns=NAME:.metadata.name,Type:.spec.type
+```
+
+```shell
+kubectl get services -o jsonpath='{.items[*].spec.clusterIP},{.items[*].metadata.name}'
+```
+
