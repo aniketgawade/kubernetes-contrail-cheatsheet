@@ -71,3 +71,16 @@ kubectl get services -o json | jq -r '.items[].metadata.name'
 ```shell
 kubectl get services -o json | jq '.items[] | {Name: .metadata.name, Type: .spec.type, ClusterIP: .spec.clusterIP}'
 ```
+
+
+Running cadvisor to get stats:
+
+```shell
+ sudo docker run   --volume=/:/rootfs:ro   --volume=/var/run:/var/run:rw   --volume=/sys:/sys:ro   --volume=/var/lib/docker/:/var/lib/docker:ro --privileged=true --volume=/cgroup:/cgroup:ro   --publish=8080:8080   --detach=true   --name=cadvisor   google/cadvisor:latest
+````
+Note:
+To make it work on openshift:
+```shell
+mount -o remount,rw '/sys/fs/cgroup'
+ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
+```
